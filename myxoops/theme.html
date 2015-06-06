@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<head><link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="red" href="red.css" />
+<link rel="alternate stylesheet" type="text/css" media="screen" title="green" href="green.css" />
+
+<script src="styleswitch.js" type="text/javascript">
+/***********************************************
+* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+***********************************************/
+</script>
+    <!-- Assign Theme name -->
+    <{assign var=theme_name value=$xoTheme->folderName}>
+
+    <!-- Title and meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+    <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+    <title><{if $xoops_pagetitle !=''}><{$xoops_pagetitle}> - <{/if}><{$xoops_sitename}></title>
+    <meta name="robots" content="<{$xoops_meta_robots}>" />
+    <meta name="keywords" content="<{$xoops_meta_keywords}>" />
+    <meta name="description" content="<{$xoops_meta_description}>" />
+    <meta name="rating" content="<{$xoops_meta_rating}>" />
+    <meta name="author" content="<{$xoops_meta_author}>" />
+    <meta name="copyright" content="<{$xoops_meta_copyright}>" />
+    <meta name="generator" content="XOOPS" />
+
+    <!-- Rss -->
+    <link rel="alternate" type="application/rss+xml" title="" href="<{xoAppUrl backend.php}>" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="<{xoImgUrl icons/favicon.ico}>" />
+    <link rel="icon" type="image/png" href="<{xoImgUrl icons/favicon.png}>" />
+    <!-- Sheet Css -->
+    <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="<{xoAppUrl xoops.css}>" />
+    <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="<{xoImgUrl style.css}>" />
+    <link rel="alternate stylesheet" type="text/css" media="all" title="green-theme" href="<{xoImgUrl /green.css}>" />
+	<link rel="alternate stylesheet" type="text/css" media="all" title="red-theme" href="<{xoImgUrl /red.css}>" />
+	<link rel="alternate stylesheet" type="text/css" media="all" title="purple-theme" href="<{xoImgUrl /purple.css}>" />
+
+    <!-- customized header contents -->
+    <{$xoops_module_header}>
+    <script src="<{$xoops_imageurl}>styleswitch.js" type="text/javascript"></script>
+</head>
+<body id="<{$xoops_dirname}>" class="<{$xoops_langcode}>"> 
+
+<!-- Start Header -->
+<table cellspacing="0">
+    <tr id="miniheader">
+        <td id="colorize"><span lang="en-us">Colorize your Page !&nbsp;
+			<a class="blue-theme" href="javascript:chooseStyle('none', 60)" checked="checked">Blue</a>
+			<a class="red-theme" href="javascript:chooseStyle('red-theme', 60)">Red</a>
+			<a class="green-theme" href="javascript:chooseStyle('green-theme', 60)">Green</a>
+			<a class="purple-theme" href="javascript:chooseStyle('purple-theme', 60)">Purple</a>
+        <td id="search">
+		<span lang="en-us">  <div id="xo-userbar">
+  <p align="right"><{if !$xoops_isuser}>
+    <!-- Menu in anonymous mode-->
+    </p>
+    <form method="post" action="<{xoAppUrl /user.php op=login}>">
+      <p align="right">
+        <!-- Pseudo -->
+        Username: <input class="uname" name="uname" type="text" title="username" size="17" />
+        <!-- Password -->
+        Password: <input class="password" name="pass" type="password" title="password" size="17" />
+        <!-- Submit button -->
+        <input type="hidden" name="xoops_redirect" value="<{$smarty.server.REQUEST_URI}>" />		
+		    <{if $lang_siteclosemsg}>
+		    <input type="hidden" name="xoops_login" value="1" />
+		    <{/if}>
+        <button type="submit" style="background:transparent; border:none;">
+		<p align="right"><img src="<{xoImgUrl icons/user/login.png}>" alt="Login" /></button>
+      	<b><font face="Arabic Transparent">
+      <a href="<{xoAppUrl register.php}>">Join Us</a> |
+      <a href="<{xoAppUrl user.php#lost}>">Lost your Password </a></font></b></p>
+    </form>
+	<p align="right"><{else}>
+    
+		<!-- Menu in recorded mode -->
+		</p>
+		<div class="usermenu">
+		  <p class="welcome" align="right">
+        Welcome <a class="uname" href="<{xoAppUrl /user.php}>" title="View Account"><{$xoops_uname}></a>
+      </p>
+			<p align="right"><br />	
+      <!-- For my message box  -->
+		  <{xoInboxCount assign=pmcount}>
+		  <a href="<{xoAppUrl viewpmsg.php}>">
+	  	<{if $pmcount}>
+		  	<!-- If I have messages -->
+		  	<img src="<{xoImgUrl icons/user/inbox-full.png}>" alt="unread message(s)"/>
+		  <{else}>
+			  <!-- If I do not have a message -->
+			  <img src="<{xoImgUrl icons/user/inbox.png}>" alt="Inbox"/>
+		  <{/if}>
+		  </a> 
+		  <!-- End my message box-->
+			
+		  <a href="<{xoAppUrl /notifications.php}>" title="Notifications"><img src="<{xoImgUrl icons/user/note_view.png}>" alt="Notifications"/></a> 
+		  <a href="<{xoAppUrl /user.php}>" title="View Account"><img src="<{xoImgUrl icons/user/profile.png}>" alt="View Account"/></a> 
+
+		  <!-- Additional link if I have rights of administration of module -->
+		  <{if $xoops_isadmin}>
+			  <a href="<{xoAppUrl /admin.php}>" title="Administration"><img src="<{xoImgUrl icons/user/configuration.png}>" alt="Administration" /></a> 
+		  <{/if}>
+		  <!-- End additional link-->
+
+		  <a href="<{xoAppUrl /user.php op=logout}>" title="Logout" ><img src="<{xoImgUrl icons/user/exit.png}>" alt="Logout"/></a>    
+    </div>
+  <p align="right"><{/if}>
+</div></span></td>
+    </tr>
+    <tr id="header">
+        <td id="headerlogo"><a href="<{xoAppUrl /}>" title="<{$xoops_sitename}>"><img src="<{xoImgUrl xoops-logo.png}>" alt="<{$xoops_sitename}>" /></a></td>
+        <td id="headerbanner"><{$xoops_banner}><span lang="en-us"> </span></td>
+    </tr>
+    <tr>
+        <td id="headerbar" colspan="2">
+		<span lang="en-us">	<div class="grey">
+	<div id="slatenav">
+	<ul>
+	<li><a href="<{xoAppUrl /}>" title="Home">Home</a></li>
+	<li><a href="<{xoAppUrl /modules/smartsection}>" title="About Us">About Us</a></li>
+	<li><a href="<{xoAppUrl /modules/xcgal}>" title="Album">Album</a></li>
+	<li><a href="<{xoAppUrl /modules/sitemap}>" title="Site Map">Site Map</a></li>
+	<li><a href="<{xoAppUrl /modules/contact}>" title="Contact Us">Contact Us</a></li>
+	</ul>
+	</div>
+	</div></span></td>
+    </tr>
+</table>
+<!-- End header -->
+
+<table cellspacing="0">
+    <tr>
+        <!-- Start left blocks loop -->
+        <{if $xoops_showlblock}>
+            <td id="leftcolumn">
+            <{foreach item=block from=$xoBlocks.canvas_left}>
+                <{includeq file="$theme_name/theme_blockleft.html"}>
+            <{/foreach}>
+            </td>
+        <{/if}>	<!-- left column- 2 --> 
+	 <{if $xoBlocks.page_bottomleft or $xoBlocks.page_bottomright or $xoBlocks.page_bottomcenter}>
+    <td id="leftcolumn2"><{foreach from=$xoBlocks.page_bottomcenter item=block}><{includeq file="$theme_name/blocks-c.html"}>
+	<{/foreach}></td><{/if}>
+        <!-- End left blocks loop -->
+
+        <td id="centercolumn">
+            <{if $xoBlocks.page_topleft or $xoBlocks.page_topcenter or $xoBlocks.page_topright}>
+		 <table cellspacing="0" class="centercol">
+		<tr>
+		 <td id="centerCcolumn" colspan="2">
+			<{foreach item=block from=$xoBlocks.page_topcenter}> <{includeq file="$theme_name/blocks-c.html"}><{/foreach}>
+		</td>
+		</tr>
+		<tr>
+		<td id="centerLcolumn">
+			<{foreach item=block from=$xoBlocks.page_topleft}> <{includeq file="$theme_name/blocks-c.html"}><{/foreach}></td>
+		 <td id="centerRcolumn">
+			<{foreach item=block from=$xoBlocks.page_topright}> <{includeq file="$theme_name/blocks-c.html"}><{/foreach}></td>
+		</tr>
+	</table>
+	<{/if}>
+	  <div id="content"> <{$xoops_contents}> </div>
+	<{if $xoBlocks.page_bottomleft or $xoBlocks.page_bottomright or $xoBlocks.page_bottomcenter}>
+	  <table cellspacing="0" class="centercol">
+<!--	<{if $xoBlocks.page_bottomcenter}>
+		<tr>
+		  <td id="bottomCcolumn" colspan="2"><{foreach from=$xoBlocks.page_bottomcenter item=block}><{includeq file="$theme_name/blocks-c.html"}><{/foreach}></td>
+		</tr>
+-->	<{/if}> <{if $xoBlocks.page_bottomleft or $xoBlocks.page_bottomright}>
+		<tr>
+		  <td id="bottomLcolumn"><{foreach from=$xoBlocks.page_bottomleft item=block}><{includeq file="$theme_name/blocks-c.html"}><{/foreach}></td>
+		  <td id="bottomRcolumn"><{foreach from=$xoBlocks.page_bottomright item=block}><{includeq file="$theme_name/blocks-c.html"}><{/foreach}></td>
+		</tr>
+	<{/if}>
+	  </table>
+	<{/if}> 
+        </td>
+
+        <{if $xoops_showrblock}>
+            <td id="rightcolumn">
+            <!-- Start right blocks loop -->
+            <{foreach item=block from=$xoBlocks.canvas_right}>
+                <{includeq file="$theme_name/theme_blockright.html"}>
+            <{/foreach}>
+            <!-- End right blocks loop -->
+            </td>
+        <{/if}>
+    </tr>
+</table>
+
+<!-- Start footer -->
+<table cellspacing="0">
+<tr id="footerbar">
+    <td><{$xoops_footer}><span lang="en-us">&nbsp; Modified by
+	<a target="_blank" href="http://www.maitsco.com/">Maitsco</a></span></td>
+</tr>
+</table>
+<!-- End footer -->
+
+<!--{xo-logger-output}--> 
+</body> 
+</html>
